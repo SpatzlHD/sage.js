@@ -31,8 +31,9 @@ class ValorantAPI {
     axios.defaults.baseURL = `https://${this.region.toLowerCase()}.api.riotgames.com/val/`;
   }
   /**
-   * Get Content of the game
-   * @returns {Promise<>} - The content of the game
+   * Get content optionally filtered by locale
+   * Read more about the Content Endpoint here: https://developer.riotgames.com/apis#val-content-v1/GET_getContent
+   * @return {Promise<ContendDto>} - Game Content  *Find out more about the ContendDto types here: https://developer.riotgames.com/apis#val-content-v1/GET_getContent*
    * @memberof ValorantAPI
    * @example const data = await api.getContent();
    * console.log(data);
@@ -48,6 +49,9 @@ class ValorantAPI {
         );
       try {
         const url = `content/v1/contents?locale=${this.locale}`;
+        /**
+         * @type {ContendDto}
+         */
         const { data } = await axios.get(url);
         return data;
       } catch (e) {
