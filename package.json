@@ -1,5 +1,5 @@
 {
-  "name": "valorant.ts",
+  "name": "val.js",
   "version": "0.0.1",
   "description": "A package that helps you build cool things with the official Riot API",
   "main": "index.js",
@@ -8,19 +8,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SpatzlHD/valorant.ts.git"
+    "url": "git+https://github.com/SpatzlHD/val.js.git"
   },
   "keywords": [
     "valorant",
     "riot",
-    "api"
+    "api",
+    "riotgames",
+    "valorantapi",
+    "riotapi"
   ],
   "author": "Alexander Kögel <contact@alexanderkoegel.com> (https://alexanderkoegel.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SpatzlHD/valorant.ts/issues"
+    "url": "https://github.com/SpatzlHD/val.js/issues"
   },
-  "homepage": "https://github.com/SpatzlHD/valorant.ts#readme",
+  "homepage": "https://github.com/SpatzlHD/val.js#readme",
   "dependencies": {
     "axios": "^0.27.2"
   }
