@@ -43,7 +43,7 @@ cost matchData = await api.match.getByID("*matchID*")
 
 #### A list of all available functions for the ValorantAPI class:
 
-<table><tbody><tr><td>.getContent()</td><td>Get content optionally filtered by locale</td></tr><tr><td>.match.getByID("*matchId*")</td><td>Get match by id</td></tr><tr><td>.match.getListbyPuuid("*puuid*")</td><td>Get matchlist for games played by puuid</td></tr><tr><td>.match.getbyQueueID("queueId")</td><td>Get recent matches</td></tr><tr><td>.getCompetitiveLeaderbord("*actId*")</td><td>Get leaderboard for the competitive queue</td></tr><tr><td>.getStatus()</td><td>Get VALORANT status for the given platform.</td></tr></tbody></table>
+<table><tbody><tr><td><a href="https://github.com/SpatzlHD/sage.js/wiki/Valorant-API-methodes#.getContent()">.getContent()</a></td><td>Get content optionally filtered by locale</td></tr><tr><td><a href="https://github.com/SpatzlHD/sage.js/wiki/Valorant-API-methodes#getbyid">.match.getByID("*matchId*")</a></td><td>Get match by id</td></tr><tr><td><a href="https://github.com/SpatzlHD/sage.js/wiki/Valorant-API-methodes#getlistbypuuid">.match.getListbyPuuid("*puuid*")</a></td><td>Get matchlist for games played by puuid</td></tr><tr><td><a href="https://github.com/SpatzlHD/sage.js/wiki/Valorant-API-methodes#getbyqueueid">.match.getbyQueueID("queueId")</a></td><td>Get recent matches</td></tr><tr><td><a href="https://github.com/SpatzlHD/sage.js/wiki/Valorant-API-methodes#getcompetitiveleaderboard">.getCompetitiveLeaderbord("*actId*")</a></td><td>Get leaderboard for the competitive queue</td></tr><tr><td><a href="https://github.com/SpatzlHD/sage.js/wiki/Valorant-API-methodes#getstatus">.getStatus()</a></td><td>Get VALORANT status for the given platform.</td></tr></tbody></table>
 
 ---
 

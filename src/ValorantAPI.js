@@ -122,7 +122,7 @@ class ValorantAPI {
       }
     },
     /**
-     * Get PUUIDs of recently played matches in a given region by a queue ID use the Queue object to use the official queue IDs
+     * Get UUIDs of recently played matches in a given region by a queue ID use the Queue object to use the official queue IDs
      * **Implementation Note:** Returns a list of match ids that have completed in the last 10 minutes for live regions and 12 hours for the esports routing value. NA/LATAM/BR share a match history deployment. As such, recent matches will return a combined list of matches from those three regions. Requests are load balanced so you may see some inconsistencies as matches are added/removed from the list.
      * *Please note that you can use this endpoint only with a production API key.*
      * @memberof ValorantAPI
@@ -156,7 +156,7 @@ class ValorantAPI {
    * @returns {Promise<LeaderboardDto>} - The Data of the Leaderboard belonging to the Act ID *Find out more about the LeaderboardDto types here: https://developer.riotgames.com/apis#val-leaderboards-v1/GET_getLeaderboard*
    * @memberof ValorantAPI
    */
-  async getCompetitiveLeaderbord(actID, size = 200, startIndex = 0) {
+  async getCompetitiveLeaderboard(actID, size = 200, startIndex = 0) {
     if (!actID) throw new Error("No Act ID provided");
     try {
       const url = `ranked/v1/leaderboards/by-act/${actID}?size=${size}&startIndex=${startIndex}`;
