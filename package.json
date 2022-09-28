@@ -2,16 +2,10 @@
   "name": "valorant.ts",
   "version": "0.0.1",
   "description": "A package that helps you build cool things with the official Riot API",
-  "main": "./dist/index.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "files": [
-    "dist",
-    "LICENSE",
-    "README.md"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SpatzlHD/valorant.ts.git"
