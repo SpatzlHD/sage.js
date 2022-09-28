@@ -1,5 +1,5 @@
 {
-  "name": "val.js",
+  "name": "sage.js",
   "version": "1.0.0",
   "description": "A package that helps you build cool things with the official Riot API",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SpatzlHD/val.js.git"
+    "url": "git+https://github.com/SpatzlHD/sage.js.git"
   },
   "keywords": [
     "valorant",
@@ -21,9 +21,9 @@
   "author": "Alexander Kögel <contact@alexanderkoegel.com> (https://alexanderkoegel.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SpatzlHD/val.js/issues"
+    "url": "https://github.com/SpatzlHD/sage.js/issues"
   },
-  "homepage": "https://github.com/SpatzlHD/val.js#readme",
+  "homepage": "https://github.com/SpatzlHD/sage.js#readme",
   "dependencies": {
     "axios": "^0.27.2"
   }

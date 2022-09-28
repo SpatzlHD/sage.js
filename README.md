@@ -1,13 +1,13 @@
-## Val.js
+## Sage.js
 
-> val.js is a powerful javascript library to help you build an application based on the official Riotgames Valorant API.
+> sage.js is a powerful javascript library to help you build an application based on the official Riotgames Valorant API.
 
 ---
 
 ### Installation
 
 ```plaintext
-npm i val.js
+npm i sage.js
 ```
 
 ---
@@ -19,7 +19,7 @@ _Before you start, please note that the valorant api can only be used with a pro
 To start, you first have to import the library and init the ValorantAPI class of the api.
 
 ```javascript
-const { ValorantAPI, Regions } = require("val.js");
+const { ValorantAPI, Regions } = require("sage.js");
 
 //init the ValorantAPI class for the region you can use all that are provided by the Regions object of the library
 const api = new ValorantAPI("*your api key", Regions.NorthAmerica);
