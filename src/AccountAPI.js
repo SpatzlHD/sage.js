@@ -94,3 +94,4 @@ class AccountAPI {
     }
   }
 }
+module.exports = AccountAPI;
