@@ -22,7 +22,7 @@ To start, you first have to import the library and init the ValorantAPI class of
 const { ValorantAPI, Regions } = require("sage.js");
 
 //init the ValorantAPI class for the region you can use all that are provided by the Regions object of the library
-const api = new ValorantAPI("*your api key", Regions.NorthAmerica);
+const api = new ValorantAPI("*your api key*", Regions.NorthAmerica);
 ```
 
 The ValorantAPI class provides functions for all the at [Riot Developer Portal (riotgames.com)](https://developer.riotgames.com/apis) listed valorant endpoints.
