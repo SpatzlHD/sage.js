@@ -40,7 +40,7 @@ class ValorantAPI {
    *
    **/
   async getContent() {
-    if (this.local) {
+    if (this.locale) {
       if (!Locale[this.locale])
         throw new Error("Invalid Local language key provided");
       if (Locale[this.local] != this.locale)

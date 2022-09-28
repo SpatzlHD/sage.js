@@ -1,6 +1,6 @@
 {
   "name": "sage.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A package that helps you build cool things with the official Riot API",
   "main": "index.js",
   "scripts": {
