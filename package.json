@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/SpatzlHD/sage.js/issues"
   },
-  "homepage": "https://github.com/SpatzlHD/sage.js#readme",
+  "homepage": "https://github.com/SpatzlHD/sage.js/wiki",
   "dependencies": {
     "axios": "^0.27.2"
   }
