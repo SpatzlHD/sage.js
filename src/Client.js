@@ -5,6 +5,7 @@ const { EventEmitter } = require("events");
 const Regions = require("../data/regions");
 const RSOModule = require("../modules/rsoModule");
 
+
 /**
  * Creates a new Client instance that can be used to work with useful methods and properties.
  * @class Client
@@ -82,7 +83,7 @@ class Client extends EventEmitter {
       enableRSOModule: false,
       /**
        * Provide the options for the RSO Module
-       *@type {object}
+       * @type {object}
        * @example
        * const client = new Client({
        *  rso:true
@@ -104,7 +105,14 @@ class Client extends EventEmitter {
          * @type {string}
          */
         clientSecret,
+        /**
+         * The redirect URL that is used by riotgames
+         * @type {string}
+         */
         redirectURI,
+        port,
+        existingExpressApp:false,
+        expressApp:null
       },
     }
   ) {
@@ -117,7 +125,7 @@ class Client extends EventEmitter {
       if (!this.api_key) {
         throw new Error("No Api Key provided");
       }
-      
+
       this.api = new ValorantAPI(this.api_key, this.region);
     } else {
       this.api = options.api;
@@ -125,11 +133,10 @@ class Client extends EventEmitter {
 
     this.statusCheck = options.statusListener;
     if (this.statusCheck) {
-      this.intervall = options.statusListenerIntervall || 10;	
-      
-      this.intervallInMS = this.intervall * 60  * 1000;
-     this.initStatusInterval();
-     
+      this.intervall = options.statusListenerIntervall || 10;
+
+      this.intervallInMS = this.intervall * 60 * 1000;
+      this.initStatusInterval();
     }
     if (options.enableRSOModule) {
       if (
@@ -140,16 +147,15 @@ class Client extends EventEmitter {
         throw new Error(
           "You need to provide all RSO module options to use the module"
         );
-
+          
       this.initRSOModule(options.rsoModuleOptions);
-      
     }
   }
   initStatusInterval() {
     setInterval(async () => {
       
       const status = await this.api.getStatus();
-      
+
       if (status.maintenances.length > 0) {
         this.emit("maintenance", status.maintenances[0]);
       } else if (status.incidents.length > 0) {
@@ -158,7 +164,31 @@ class Client extends EventEmitter {
     }, this.intervallInMS);
   }
   initRSOModule(options) {
-    this.RSOModule = new RSOModule(options.rsoModuleOptions);
+    if(!options.existingExpressApp){
+    const optionsSend = {
+      clientID: options.clientID,
+      clientSecret: options.clientSecret,
+      redirectURI: options.redirectURI,
+      port: 3001,
+      existingExpressApp:false
+    }
+    this.RSOModule = new RSOModule(
+      optionsSend
+      
+    );
+    }else{
+      const optionsToSend= {
+        clientID: options.clientID,
+        clientSecret: options.clientSecret,
+        redirectURI: options.redirectURI,
+        existingExpressApp:true,
+        expressApp:options.expressApp
+
+      }
+      this.RSOModule = new RSOModule(
+        options
+      );
+    }
   }
 }
 

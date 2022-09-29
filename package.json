@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/SpatzlHD/sage.js/wiki",
   "dependencies": {
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "express": "^4.18.1"
   }
 }

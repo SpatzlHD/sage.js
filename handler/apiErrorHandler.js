@@ -6,7 +6,7 @@ class ApiErrorHandler {
 
   handle() {
     const e = this.error;
-    const status = e.response.status;
+    const status = e.response?.status;
     if (status === 400) {
       throw new Error(
         `Status Code: ${status} - ${e.response.data.status.message}\n\nThis error indicates that there is a syntax error in the request and the request has therefore been denied.`
