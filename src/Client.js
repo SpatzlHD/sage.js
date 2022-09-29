@@ -80,37 +80,85 @@ class Client extends EventEmitter {
        * const client = new Client({rso: true});
        */
       enableRSOModule: false,
+      /**
+       * Provide the options for the RSO Module
+       *@type {object}
+       * @example
+       * const client = new Client({
+       *  rso:true
+       *  rsoModuleOptions:{
+       *    clientID: "*the clientID of the application*",
+       *    clientSecret: "*the secret of the application*",
+       *    redirectURI: "the redirect URL that is used by riotgames"
+       *  }
+       * })
+       */
+      rsoModuleOptions: {
+        /**
+         * The cientID of the application
+         * @type {string}
+         */
+        clientID,
+        /**
+         * The secret of the application
+         * @type {string}
+         */
+        clientSecret,
+        redirectURI,
+      },
     }
   ) {
     super();
     this.api;
+    this.RSOModule;
     if (options.newAPIinstance) {
       this.api_key = options.api_key;
       this.region = region;
       if (!this.api_key) {
         throw new Error("No Api Key provided");
       }
-      this.intervall = options.intervall;
-      this.intervallInMS = this.intervall * 60 * 1000;
+      
       this.api = new ValorantAPI(this.api_key, this.region);
     } else {
-      this.api === options.api;
+      this.api = options.api;
     }
 
     this.statusCheck = options.statusListener;
     if (this.statusCheck) {
-      this.initStatusInterval();
+      this.intervall = options.statusListenerIntervall || 10;	
+      
+      this.intervallInMS = this.intervall * 60  * 1000;
+     this.initStatusInterval();
+     
+    }
+    if (options.enableRSOModule) {
+      if (
+        !options.rsoModuleOptions.clientID ||
+        !options.rsoModuleOptions.clientSecret ||
+        !options.rsoModuleOptions.redirectURI
+      )
+        throw new Error(
+          "You need to provide all RSO module options to use the module"
+        );
+
+      this.initRSOModule(options.rsoModuleOptions);
+      
     }
   }
   initStatusInterval() {
     setInterval(async () => {
+      
       const status = await this.api.getStatus();
+      
       if (status.maintenances.length > 0) {
         this.emit("maintenance", status.maintenances[0]);
       } else if (status.incidents.length > 0) {
         this.emit("incident", status.incidents[0]);
       }
-    }, this.intervall);
+    }, this.intervallInMS);
+  }
+  initRSOModule(options) {
+    this.RSOModule = new RSOModule(options.rsoModuleOptions);
   }
 }
 
