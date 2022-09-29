@@ -144,8 +144,8 @@ class Client extends EventEmitter {
         throw new Error(
           "You need to provide all RSO module options to use the module"
         );
-
-      this.initRSOModule(options.rsoModuleOptions);
+      this.options = options.rsoModuleOptions;
+      this.initRSOModule();
     }
   }
   initStatusInterval() {
@@ -159,15 +159,15 @@ class Client extends EventEmitter {
       }
     }, this.intervallInMS);
   }
-  initRSOModule(options) {
-    console.log(options.clientID);
-    const optionsSend = {
-      clientID: options.clientID,
-      clientSecret: options.clientSecret,
-      redirectURI: options.redirectURI,
-      port: 3001,
+  initRSOModule() {
+    this.optionsSend = {
+      clientID: this.options.clientID,
+      clientSecret: this.options.clientSecret,
+      redirectURI: this.options.redirectURI,
+      port: this.options.port,
     };
-    this.RSOModule = new RSOModule(optionsSend);
+
+    this.RSOModule = new RSOModule(this.optionsSend);
   }
 }
 
