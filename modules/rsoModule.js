@@ -2,24 +2,15 @@ const express = require("express");
 const { EventEmitter } = require("events");
 
 class RSOModule extends EventEmitter {
-  constructor(
-    options
-  ) {
+  constructor(options) {
+    console.log(options)
     super();
-    
     this.app;
-    
-     
-    
-      
-    
-    
-    this.existingApp
+    this.existingApp;
     this.port = options.port || 3001;
     this.clientID = options.clientID;
     this.clientSecret = options.clientSecret;
     this.redirectURI = options.redirectURI;
-    
     this.accessToken;
     this.refreshToken;
     this.tokenType;
@@ -34,18 +25,14 @@ class RSOModule extends EventEmitter {
     this.scope = "openid offline_access";
   }
   async initModule() {
-    this.app = express()
+    this.app = express();
     this.app.get(this.redirectURI, (req, res) => {
       res.send("Hello World!");
     });
-    
-    
-      const data = await this.app.listen(this.port)
-      
-      this.emit("ready", "RSOModule is ready!")
-    
-    
-    
+
+    this.app.listen(this.port, () => {
+      this.emit("ready", `RSO Module is running on port ${this.port}`);
+    });
   }
 }
 

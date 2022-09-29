@@ -5,7 +5,6 @@ const { EventEmitter } = require("events");
 const Regions = require("../data/regions");
 const RSOModule = require("../modules/rsoModule");
 
-
 /**
  * Creates a new Client instance that can be used to work with useful methods and properties.
  * @class Client
@@ -111,8 +110,6 @@ class Client extends EventEmitter {
          */
         redirectURI,
         port,
-        existingExpressApp:false,
-        expressApp:null
       },
     }
   ) {
@@ -147,13 +144,12 @@ class Client extends EventEmitter {
         throw new Error(
           "You need to provide all RSO module options to use the module"
         );
-          
+
       this.initRSOModule(options.rsoModuleOptions);
     }
   }
   initStatusInterval() {
     setInterval(async () => {
-      
       const status = await this.api.getStatus();
 
       if (status.maintenances.length > 0) {
@@ -164,31 +160,14 @@ class Client extends EventEmitter {
     }, this.intervallInMS);
   }
   initRSOModule(options) {
-    if(!options.existingExpressApp){
+    console.log(options.clientID);
     const optionsSend = {
       clientID: options.clientID,
       clientSecret: options.clientSecret,
       redirectURI: options.redirectURI,
       port: 3001,
-      existingExpressApp:false
-    }
-    this.RSOModule = new RSOModule(
-      optionsSend
-      
-    );
-    }else{
-      const optionsToSend= {
-        clientID: options.clientID,
-        clientSecret: options.clientSecret,
-        redirectURI: options.redirectURI,
-        existingExpressApp:true,
-        expressApp:options.expressApp
-
-      }
-      this.RSOModule = new RSOModule(
-        options
-      );
-    }
+    };
+    this.RSOModule = new RSOModule(optionsSend);
   }
 }
 
